@@ -8,17 +8,27 @@ const loadCategories = () => {
         console.log(data.categories
 );
 const catagoriesCont = data.categories;
-catagoriesCont.forEach( cat => {
-    console.log(cat.title);
-    categoryContent.innerHTML += `<li class="hover:border-b-5 hover:border-red-950 cursor-pointer">${cat.title}</li>
-    `;
-    
-    
-});
+console.log(catagoriesCont);
+  shwoCategorys (catagoriesCont);
 
     } )
     .catch((err) => {
         console.log(err)
     })
+}
+const shwoCategorys = (catagoriesCont) => {
+    catagoriesCont.forEach( cat => {
+   
+    categoryContent.innerHTML += `<li id="${cat.id}" class="hover:border-b-5 hover:border-red-950 cursor-pointer">${cat.title}</li>
+    `;
+   
+    
+});
+ categoryContent.addEventListener('click' , (e) => {
+        if(e.target.localName === 'li'){
+    console.log(e.target)
+
+        }
+    } )
 }
 loadCategories();
